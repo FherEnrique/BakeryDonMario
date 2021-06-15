@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\product;
+use App\Models\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class productFactory extends Factory
+class ClientFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = product::class;
+    protected $model = Client::class;
 
     /**
      * Define the model's default state.
@@ -22,8 +22,7 @@ class productFactory extends Factory
     public function definition()
     {
         return [
-            'name' =>  $this->faker->word(),
-            'amount' =>   $this->faker->numberBetween(1, 5),
+            'name' =>  $this->faker->name(),
         ];
     }
 }
