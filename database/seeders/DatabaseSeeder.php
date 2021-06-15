@@ -2,12 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\admin;
-use App\Models\client;
-use App\Models\invoice;
-use App\Models\product;
-use App\Models\product_invoice;
+use App\Models\Admin;
+use App\Models\Client;
+use App\Models\Invoice;
+use App\Models\Product;
+use App\Models\ProductInvoice;
 use Illuminate\Database\Seeder;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -17,10 +18,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        admin::factory(5)->create();
-        client::factory(20)->create();
-        product::factory(20)->create();
-        invoice::factory(3)->create();
-        product_invoice::factory(20)->create();
+        Admin::factory(5)->create();
+        Client::factory(20)->create();
+        Product::factory(20)->create();
+        Invoice::factory(3)->create();
+        ProductInvoice::factory(20)->create();
     }
 }

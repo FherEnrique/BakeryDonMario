@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
+use App\Models\ProductInvoice;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\admin;
 
-class adminFactory extends Factory
+class ProductInvoiceFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = admin::class;
+    protected $model = ProductInvoice::class;
 
     /**
      * Define the model's default state.
@@ -22,8 +22,9 @@ class adminFactory extends Factory
     public function definition()
     {
         return [
-            'user' =>  $this->faker->word(),
-            'password' =>  $this->faker->sha256,
+            'id_invoice' =>   $this->faker->numberBetween(1, 3),
+            'id_product' =>   $this->faker->numberBetween(1, 20),
+            'stock' =>   $this->faker->numberBetween(1, 10),
         ];
     }
 }

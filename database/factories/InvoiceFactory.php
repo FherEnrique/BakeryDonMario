@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\invoice;
+use App\Models\Invoice;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class invoiceFactory extends Factory
+class InvoiceFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = invoice::class;
+    protected $model = Invoice::class;
 
     /**
      * Define the model's default state.
