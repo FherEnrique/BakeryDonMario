@@ -15,5 +15,6 @@
         <main role="main">
             @yield('content')
         </main>
+        @include('sweetalert::alert')
     </body>
 </html>
