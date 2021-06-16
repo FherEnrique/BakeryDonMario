@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\ClientController;
 use \App\Http\Controllers\ProductController;
+use RealRashid\SweetAlert\Facades\Alert;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
