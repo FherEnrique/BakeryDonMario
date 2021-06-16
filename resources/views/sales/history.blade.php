@@ -10,7 +10,7 @@
         </div>
     </form>
 
-
+    <!-- repetir -->
     <div class="w-full mx-auto rounded-xl shadow-lg p-6 text-gray-800 relative overflow-hidden max-w-7xl">
         <div class="flex flex-row">
             <div class="p-4">
@@ -36,6 +36,7 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <!-- repetir-->
                             <tr>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <p class="text-gray-900 whitespace-no-wrap">
@@ -48,12 +49,14 @@
                                     </p>
                                 </td>
                             </tr>
+                        <!-- terminar-->
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+    <!-- terminar -->
 
 
 @endsection
