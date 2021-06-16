@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +21,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/', function () {
+    return 'Hola Mundo';
+});
+
+Route::prefix('/clients')->group(function () {
+    Route::post('/', [ClientController::class, 'store']);
+    Route::post('/{client}', [ClientController::class, 'update']);
+});
+
+Route::post('/login', [UserController::class, 'login']);
+Route::get('/info', [UserController::class, 'infoUser']);
