@@ -25,6 +25,8 @@ Route::get('/shoppingCart/',[ProductController::class, 'shoppingCart']);
 Route::get('/addShoppingCart/{id}',[ProductController::class, 'addShoppingCart']);
 Route::get('/saleHistory/', [ProductController::class, 'saleHistory']);
 Route::post('/finishSale/', [ProductController::class, 'finishSale']);
+Route::get('/createProduct/',[ProductController::class, 'index']);
+Route::post('/createProduct/',[ProductController::class, 'store'])->name('products.store');
 
 //Rutas del cliente
 Route::get('/selectClient/',[ClientController::class, 'selectClient']);

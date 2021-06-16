@@ -37,9 +37,21 @@ class ProductController extends Controller
         //
     }
 
+    public function index()
+    {
+        return view('/products/createProduct');
+    }
+
+
     public function store(Request $request)
     {
-        //
+        $product = new Product();
+        $product->name = $request->name;
+        $product->amount = $request->amount;
+
+        $product->save();
+
+        return view('products.createProduct');
     }
 
     public function show(Product $product)
