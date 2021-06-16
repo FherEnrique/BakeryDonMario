@@ -9,7 +9,7 @@ class ClientController extends Controller
 {
     public function selectClient()
     {
-        return "Buscador de clientes y seleccion del cliente";
+        return view('/sales/selectedClient');
     }
 
     public function selectedClient($id)

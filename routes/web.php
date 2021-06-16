@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 //Rutas de producto
 Route::get('/viewProduct/',[ProductController::class, 'viewProduct']);
-Route::get('/shoopingCart/',[ProductController::class, 'shoopingCart']);
+Route::get('/shoppingCart/',[ProductController::class, 'shoppingCart']);
 Route::get('/addShoppingCart/{id}',[ProductController::class, 'addShoppingCart']);
 Route::get('/saleHistory/', [ProductController::class, 'saleHistory']);
 Route::post('/finishSale/', [ProductController::class, 'finishSale']);

@@ -9,7 +9,7 @@ class ProductController extends Controller
 {
     public function viewProduct()
     {
-        return "Tomar ID de la URL y tomar ID del producto del formulario UWU";
+        return view('/sales/viewProduct');
     }
 
     public function addShoppingCart($id)
@@ -17,14 +17,17 @@ class ProductController extends Controller
         return "POST";
     }
 
-    public function shoopingCart()
+    public function shoppingCart()
     {
-        return "Aqui modificamos el pedido";
+        return view('/sales/shoppingCart');
     }
 
     public function finishSale()
     {
         return "Soy un metodo POST";
+    }
+    public function saleHistory(){
+        return view('/sales/history');
     }
 
     public function create()
