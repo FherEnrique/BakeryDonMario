@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
@@ -26,20 +27,28 @@ class ProductController extends Controller
     {
         return "Soy un metodo POST";
     }
-    public function saleHistory(){
-        //return redirect('/')->alert('Title','Lorem Lorem Lorem', 'success');
-        //Alert::alert('Title', 'Message', 'Type');
-        return view('/sales/history');
-    }
+
 
     public function create()
     {
         //
     }
 
+    public function index()
+    {
+        return view('/products/createProduct');
+    }
+
+
     public function store(Request $request)
     {
-        //
+        $product = new Product();
+        $product->name = $request->name;
+        $product->amount = $request->amount;
+
+        $product->save();
+
+        return view('products.createProduct');
     }
 
     public function show(Product $product)
