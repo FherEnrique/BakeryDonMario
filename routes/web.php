@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\ClientController;
 use \App\Http\Controllers\ProductController;
-use RealRashid\SweetAlert\Facades\Alert;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +16,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 */
 
 Route::get('/', function () {
+
     return view('welcome');
 });
 //Rutas de producto
