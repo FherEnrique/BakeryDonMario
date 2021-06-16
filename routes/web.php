@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\ClientController;
 use \App\Http\Controllers\ProductController;
+use \App\Http\Controllers\ProductInvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ Route::get('/', function () {
 Route::get('/viewProduct/',[ProductController::class, 'viewProduct']);
 Route::get('/shoppingCart/',[ProductController::class, 'shoppingCart']);
 Route::get('/addShoppingCart/{id}',[ProductController::class, 'addShoppingCart']);
-Route::get('/saleHistory/', [ProductController::class, 'saleHistory']);
+Route::get('/saleHistory/', [ProductInvoiceController::class, 'saleHistory']); //Modifique esta
 Route::post('/finishSale/', [ProductController::class, 'finishSale']);
 Route::get('/createProduct/',[ProductController::class, 'index']);
 Route::post('/createProduct/',[ProductController::class, 'store'])->name('products.store');

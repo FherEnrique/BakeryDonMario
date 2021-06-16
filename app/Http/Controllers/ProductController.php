@@ -27,9 +27,7 @@ class ProductController extends Controller
     {
         return "Soy un metodo POST";
     }
-    public function saleHistory(){
-        return view('/sales/history');
-    }
+
 
     public function create()
     {
