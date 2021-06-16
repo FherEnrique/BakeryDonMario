@@ -54,8 +54,8 @@
                                 @empty
                                     <tr>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm" colspan="2">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                No hay detalles que mostrar
+                                            <p class="text-gray-900 whitespace-no-wrap text-xl text-center">
+                                                No hay detalles que mostrar.
                                             </p>
                                         </td>
                                     </tr>
@@ -68,11 +68,7 @@
             </div>
         </div>
     @empty
-        <div class="w-full mx-auto rounded-xl shadow-lg p-6 text-gray-800 relative overflow-hidden max-w-7xl">
-            <div class="flex flex-row">
-                <h1>No hay facturas</h1>
-            </div>
-        </div>
+        <h1 class="text-center p-10 text-3xl text-gray-900">No hay facturas.</h1>
     @endforelse
     <!-- terminar1 -->
 
