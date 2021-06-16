@@ -27,6 +27,8 @@ class ProductController extends Controller
         return "Soy un metodo POST";
     }
     public function saleHistory(){
+        //return redirect('/')->alert('Title','Lorem Lorem Lorem', 'success');
+        //Alert::alert('Title', 'Message', 'Type');
         return view('/sales/history');
     }
 

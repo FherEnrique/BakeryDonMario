@@ -37,8 +37,4 @@
             </div>
         </div>
     </section>
-    @php
-        Alert::alert('Title', 'Message', 'success');
-    @endphp
-    @include('sweetalert::alert')
 @endsection
