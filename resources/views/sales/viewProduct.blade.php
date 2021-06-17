@@ -4,12 +4,6 @@
     <h1 class="text-2xl text-center my-6">Agregar los productos al carrito de compras</h1>
 
         <div class="w-full mx-auto rounded-xl shadow-lg p-6 text-gray-800 relative overflow-hidden max-w-3xl">
-            <div class="relative mt-1">
-                <form method="POST">
-                    <input type="text" id="textSearch" name="textSearch" class="w-full pl-3 pr-10 py-2 border-2 border-gray-200 rounded-xl hover:border-gray-300 focus:outline-none focus:border-blue-300 transition-colors" placeholder="Buscar...">
-                    <button class="block w-7 h-7 text-center text-xl leading-0 absolute top-2 right-2 text-gray-400 focus:outline-none hover:text-gray-900 transition-colors"><i class="fas fa-search"></i></button>
-                </form>
-            </div>
             <div class="p-4 mt-5 grid justify-items-center">
                 <a href="/shoppingCart/">
                     <button class="bg-green-700 px-5 py-3 text-xl shadow-sm  tracking-wider border text-white rounded-full hover:shadow-lg hover:bg-green-800">
