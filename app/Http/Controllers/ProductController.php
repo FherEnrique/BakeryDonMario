@@ -20,6 +20,24 @@ class ProductController extends Controller
             return redirect()->to('/selectClient/')->send();
         }
     }
+    public function editShoppingCart(Request $request,$id)
+    {
+        $shoppingList = json_decode(session('shoppingList'));
+        $shoppingList[$id]->stock = $request->productValue;
+        session(['shoppingList' => json_encode($shoppingList)]);
+        Alert::success('Se actualizo correctamente el registro');
+        return redirect()->to('/shoppingCart/');
+    }
+
+    public function deleteShoppingCart($id)
+    {
+        $shoppingList = json_decode(session('shoppingList'));
+        unset($shoppingList[$id]);
+        session(['shoppingList' => json_encode($shoppingList)]);
+        dd(session('shoppingList'));
+        //Alert::error('Se elimino correctamente el registro');
+        //return redirect()->to('/shoppingCart/');
+    }
 
     public function addShoppingCart(Request $request,$id)
     {
@@ -66,12 +84,12 @@ class ProductController extends Controller
                 $detailsProductId = Product::find($shoopingCart[$i]->id_product);
                 $shoopingCart[$i]->price = $detailsProductId->amount * $shoopingCart[$i]->stock;
                 $shoopingCart[$i]->name = $detailsProductId->name;
+                $shoopingCart[$i]->index = $i;
                 $totalSale += $shoopingCart[$i]->price;
             }
         } else {
             $shoopingCart = "";
         }
-        //dd($shoopingCart);
         return view('/sales/shoppingCart',compact('shoopingCart','totalSale'));
     }
 
