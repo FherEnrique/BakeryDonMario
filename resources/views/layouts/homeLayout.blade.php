@@ -39,12 +39,12 @@
                         <div class="bg-white rounded w-full relative z-10 py-1">
                             <ul class="list-reset">
                                 <li class="relative" x-data="{showChildren:false}" @mouseleave="showChildren=false" @mouseenter="showChildren=true">
-                                    <a href="/user/edit" class="px-4 py-2 flex w-full items-start hover:bg-gray-100 no-underline hover:no-underline transition-colors duration-100 cursor-pointer">
+                                    <a href="/createProduct" class="px-4 py-2 flex w-full items-start hover:bg-gray-100 no-underline hover:no-underline transition-colors duration-100 cursor-pointer">
                                         <span class="flex-1">Crear Producto</span>
                                     </a>
                                 </li>
                                 <li class="relative" x-data="{showChildren:false}" @mouseleave="showChildren=false" @mouseenter="showChildren=true">
-                                    <a href="/user/phone" class="px-4 py-2 flex w-full items-start hover:bg-gray-100 no-underline hover:no-underline transition-colors duration-100 cursor-pointer">
+                                    <a href="/products" class="px-4 py-2 flex w-full items-start hover:bg-gray-100 no-underline hover:no-underline transition-colors duration-100 cursor-pointer">
                                         <span class="flex-1">Ver Productos</span>
                                     </a>
                                 </li>

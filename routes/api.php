@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,6 +26,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/', function () {
     return 'Hola Mundo';
 });
+
+Route::post('/products/',[ProductController::class, 'store'])->name('products.store');
+Route::post('/products/{id}', [ProductController::class, 'update']);
 
 Route::prefix('/clients')->group(function () {
     Route::post('/', [ClientController::class, 'store']);

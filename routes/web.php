@@ -30,8 +30,10 @@ Route::get('/shoppingCart/',[ProductController::class, 'shoppingCart']);
 Route::get('/addShoppingCart/{id}',[ProductController::class, 'addShoppingCart']);
 Route::get('/saleHistory/', [ProductInvoiceController::class, 'saleHistory']); //Modifique esta
 Route::post('/finishSale/', [ProductController::class, 'finishSale']);
-Route::get('/createProduct/',[ProductController::class, 'index']);
-Route::post('/createProduct/',[ProductController::class, 'store'])->name('products.store');
+Route::get('/createProduct/',[ProductController::class, 'create']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
+Route::get('/products', [ProductController::class, 'index']);
+
 
 //Rutas del cliente
 Route::prefix('/clients')->group(function () {
