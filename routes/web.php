@@ -28,12 +28,16 @@ Route::get('/saleHistory/', [ProductController::class, 'saleHistory']);
 Route::get('/viewProduct/',[ProductController::class, 'viewProduct']);
 Route::get('/shoppingCart/',[ProductController::class, 'shoppingCart']);
 Route::get('/addShoppingCart/{id}',[ProductController::class, 'addShoppingCart']);
+Route::get('/editShoppingCart/{id}',[ProductController::class, 'editShoppingCart']);
+Route::get('/deleteShoppingCart/{id}',[ProductController::class, 'deleteShoppingCart']);
 Route::get('/saleHistory/', [ProductInvoiceController::class, 'saleHistory']); //Modifique esta
+Route::get('/finishSale/', [ProductController::class, 'finishSale']);
+Route::get('/createProduct/',[ProductController::class, 'index']);
+Route::post('/createProduct/',[ProductController::class, 'store'])->name('products.store');
 Route::post('/finishSale/', [ProductController::class, 'finishSale']);
 Route::get('/createProduct/',[ProductController::class, 'create']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
 Route::get('/products', [ProductController::class, 'index']);
-
 
 //Rutas del cliente
 Route::prefix('/clients')->group(function () {

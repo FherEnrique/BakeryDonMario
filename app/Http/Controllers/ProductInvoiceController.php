@@ -8,13 +8,16 @@ use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use App\Models\ProductInvoice;
 use Illuminate\Http\Request;
+use Session;
 
 class ProductInvoiceController extends Controller
 {
     public function saleHistory(){
+        //Session::flush();
         $listInvoicesNameClient = DB::table('invoices')
             ->join('clients','clients.id','=','invoices.id_client')
             ->select('invoices.id','clients.name')
+            ->orderBy('id','desc')
             ->get();
         for ($i=0; $i < count($listInvoicesNameClient); $i++) {
             $listDetailsInvoices = DB::table('product_invoices')
@@ -23,7 +26,7 @@ class ProductInvoiceController extends Controller
                 ->where('product_invoices.id_invoice','=',$listInvoicesNameClient[$i]->id)
                 ->get();
                 $listInvoicesNameClient[$i]->listDetailsInvoices = $listDetailsInvoices;
-            }
+        }
         return view('/sales/history', compact('listInvoicesNameClient'));
     }
 }
