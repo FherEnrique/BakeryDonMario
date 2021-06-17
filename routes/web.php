@@ -27,7 +27,7 @@ Route::get('/addShoppingCart/{id}',[ProductController::class, 'addShoppingCart']
 Route::get('/editShoppingCart/{id}',[ProductController::class, 'editShoppingCart']);
 Route::get('/deleteShoppingCart/{id}',[ProductController::class, 'deleteShoppingCart']);
 Route::get('/saleHistory/', [ProductInvoiceController::class, 'saleHistory']); //Modifique esta
-Route::post('/finishSale/', [ProductController::class, 'finishSale']);
+Route::get('/finishSale/', [ProductController::class, 'finishSale']);
 Route::get('/createProduct/',[ProductController::class, 'index']);
 Route::post('/createProduct/',[ProductController::class, 'store'])->name('products.store');
 

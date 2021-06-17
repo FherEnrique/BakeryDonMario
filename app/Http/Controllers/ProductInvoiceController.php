@@ -13,10 +13,11 @@ use Session;
 class ProductInvoiceController extends Controller
 {
     public function saleHistory(){
-        Session::flush();
+        //Session::flush();
         $listInvoicesNameClient = DB::table('invoices')
             ->join('clients','clients.id','=','invoices.id_client')
             ->select('invoices.id','clients.name')
+            ->orderBy('id','desc')
             ->get();
         for ($i=0; $i < count($listInvoicesNameClient); $i++) {
             $listDetailsInvoices = DB::table('product_invoices')

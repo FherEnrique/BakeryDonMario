@@ -1,6 +1,6 @@
 @extends('..layouts.homeLayout')
 @section('container')
-    <a href="" class="mx-auto">
+    <a href="/viewProduct/" class="mx-auto">
         <button class="bg-green-700 px-5 py-3 mt-10 ml-10 text-sm shadow-sm font-medium tracking-wider border text-white rounded-full hover:shadow-lg hover:bg-green-800">
             <i class="fas fa-long-arrow-alt-left"></i> Regresar
         </button>
@@ -51,9 +51,11 @@
                         @endif
                         <div class="p-4 justify-center flex">
                             @if($totalSale != 0)
-                                <button class="bg-green-700 px-5 py-3 text-xl shadow-sm  tracking-wider border text-white rounded-full hover:shadow-lg hover:bg-green-800">
-                                    <i class="fas fa-credit-card"></i> Pagar ${{ $totalSale }}
-                                </button>
+                                <a href="/finishSale/">
+                                    <button class="bg-green-700 px-5 py-3 text-xl shadow-sm  tracking-wider border text-white rounded-full hover:shadow-lg hover:bg-green-800">
+                                        <i class="fas fa-credit-card"></i> Pagar ${{ $totalSale }}
+                                    </button>
+                                </a>
                             @else
                                 <div class="text-center">
                                     Debe agregar productos

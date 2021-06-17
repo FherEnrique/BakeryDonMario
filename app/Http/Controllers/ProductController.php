@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invoice;
 use App\Models\Product;
 use App\Models\ProductInvoice;
 use Illuminate\Database\Eloquent\Model;
@@ -31,12 +32,16 @@ class ProductController extends Controller
 
     public function deleteShoppingCart($id)
     {
+        $helperArray = array();
         $shoppingList = json_decode(session('shoppingList'));
         unset($shoppingList[$id]);
-        session(['shoppingList' => json_encode($shoppingList)]);
-        dd(session('shoppingList'));
-        //Alert::error('Se elimino correctamente el registro');
-        //return redirect()->to('/shoppingCart/');
+        foreach ($shoppingList as $item) {
+            array_push($helperArray,$item);
+        }
+        Alert::success('Se elimino correctamente el registro');
+        session(['shoppingList' => json_encode($helperArray)]);
+        //dd(session('shoppingList'));
+        return redirect()->to('/shoppingCart/');
     }
 
     public function addShoppingCart(Request $request,$id)
@@ -95,7 +100,26 @@ class ProductController extends Controller
 
     public function finishSale()
     {
-        return "Soy un metodo POST";
+        if (session('shoppingList') != "" and session('id_client') != "") {
+            $objectInvoice = new Invoice();
+            $objectInvoice->id_client = session('id_client');
+            $objectInvoice->save();
+            $shoppingList = json_decode(session('shoppingList'));
+            foreach ($shoppingList as $item) {
+                $objectProductInvoice = new ProductInvoice();
+                $objectProductInvoice->id_invoice = $objectInvoice->id;
+                $objectProductInvoice->id_product = $item->id_product;
+                $objectProductInvoice->stock = $item->stock;
+                $objectProductInvoice->save();
+            }
+            Session::flush();
+            //dd($objectInvoice);
+            //return session('id_client');
+            Alert::success('La compra se realizo con exito');
+            return redirect()->to('/selectClient/');
+        } else {
+            return redirect()->to('/viewProduct/');
+        }
     }
 
 
