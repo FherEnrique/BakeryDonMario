@@ -9,12 +9,18 @@ class ClientController extends Controller
 {
     public function selectClient()
     {
-        return view('/sales/selectedClient');
+        if (session('id_client')!= ""){
+            return redirect()->to('/viewProduct/')->send();
+        }else{
+            $listClients = Client::select('id','name')->get();
+            return view('/sales/selectedClient', compact('listClients'));
+        }
     }
 
     public function selectedClient($id)
     {
-        return "SOY UN METODO GET";
+        session(['id_client'=>$id]);
+        return redirect()->to('/viewProduct/')->send();
     }
 
     public function create()

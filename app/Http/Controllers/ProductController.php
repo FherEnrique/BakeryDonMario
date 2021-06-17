@@ -3,24 +3,76 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductInvoice;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Session;
 
 class ProductController extends Controller
 {
     public function viewProduct()
     {
-        return view('/sales/viewProduct');
+        if (session('id_client') != ""){
+            $listAllProduct = Product::all();
+            return view('/sales/viewProduct', compact('listAllProduct'));
+        }else{
+            return redirect()->to('/selectClient/')->send();
+        }
     }
 
-    public function addShoppingCart($id)
+    public function addShoppingCart(Request $request,$id)
     {
-        return "POST";
+        $helperObject = new ProductInvoice();
+        if (session('shoppingList') == ""){
+            $shoppingList = array();
+            $helperObject->stock = $request->countProduct;
+        }else{
+            $shoppingList = json_decode(session('shoppingList'));
+            $position = 0;
+            if ($this->comparationArray($shoppingList,$id,$position)) {
+                $shoppingList[$position]->stock += $request->countProduct;
+                session(['shoppingList' => json_encode($shoppingList)]);
+                Alert::success('Se agrego mas cantidad a la lista');
+                return redirect()->to('/viewProduct/');
+            } else {
+                $helperObject->stock = $request->countProduct;
+            }
+        }
+        $helperObject->id_product = $id;
+        array_push($shoppingList, $helperObject);
+        session(['shoppingList' => json_encode($shoppingList)]);
+        Alert::success('Se agrego el producto a la lista');
+        return redirect()->to('/viewProduct/');
+    }
+
+    private function comparationArray($permanentArray, $id, &$posicion){
+        $i = 0;
+        foreach ($permanentArray as $item) {
+            $i++;
+            if ($item->id_product == $id) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public function shoppingCart()
     {
-        return view('/sales/shoppingCart');
+        $totalSale = 0;
+        if (session('shoppingList') != null) {
+            $shoopingCart = json_decode(session('shoppingList'));
+            for ($i=0;$i < count($shoopingCart);$i++) {
+                $detailsProductId = Product::find($shoopingCart[$i]->id_product);
+                $shoopingCart[$i]->price = $detailsProductId->amount * $shoopingCart[$i]->stock;
+                $shoopingCart[$i]->name = $detailsProductId->name;
+                $totalSale += $shoopingCart[$i]->price;
+            }
+        } else {
+            $shoopingCart = "";
+        }
+        //dd($shoopingCart);
+        return view('/sales/shoppingCart',compact('shoopingCart','totalSale'));
     }
 
     public function finishSale()
