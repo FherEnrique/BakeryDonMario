@@ -9,9 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Session;
+use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
+
+
     public function viewProduct()
     {
         if (session('id_client') != ""){
@@ -123,18 +126,24 @@ class ProductController extends Controller
     }
 
 
-    public function create()
-    {
-        //
-    }
 
-    public function index()
+
+    public function create()
     {
         return view('/products/createProduct');
     }
 
+    public function index()
+    {
+        $products = Product::latest()->get();
 
-    public function store(Request $request)
+        return view('products.index', [
+            'products' => $products
+        ]);
+    }
+
+
+    public function store(ProductRequest $request)
     {
         $product = new Product();
         $product->name = $request->name;
@@ -142,12 +151,12 @@ class ProductController extends Controller
 
         $product->save();
 
-        return view('products.createProduct');
+        return $this->index();
     }
 
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+        return view('/products/show', ['product' => Product::findOrFail($id)]);
     }
 
     public function edit(Product $product)
@@ -155,8 +164,13 @@ class ProductController extends Controller
         //
     }
 
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request,Request $reques, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->name = $request->name;
+        $product->amount = $request->amount;
+        $product->save();
+
+        return $this->index();
     }
 }

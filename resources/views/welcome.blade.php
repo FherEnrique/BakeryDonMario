@@ -9,22 +9,21 @@
             <div class="w-full h-100">
                 <img src="https://image.freepik.com/vector-gratis/diseno-logotipo-pan_10250-793.jpg" width="450" height="450" class="content-center">
                 <h1 class="text-xl md:text-2xl font-bold leading-tight">Ingresa con tu cuenta.</h1>
-                <form class="mt-6" action="#" method="POST">
+                <form class="mt-6" action="/api/login" method="POST">
                     <div>
                         <input
-                                type="email"
-                                name="" id=""
-                                placeholder="Correo electrónico"
+                                type="text"
+                                name="user" id="user"
+                                placeholder="Usuario"
                                 class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
                                 autofocus autocomplete required>
                     </div>
                     <div class="mt-4">
                         <input
                                 type="password"
-                                name=""
-                                id=""
+                                name="password"
+                                id="password"
                                 placeholder="Contraseña"
-                                minlength="6"
                                 class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
                                 required>
                     </div>
