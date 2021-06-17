@@ -41,7 +41,8 @@ class ClientController extends Controller
     {
         $formValidated = $request->validated();
         if ($this->client->create($formValidated)) {
-            return redirect('clients')->withSuccess('Cliente creado correctamente');
+            Alert::success('Éxito', 'Cliente creado correctamente');
+            return redirect('clients');
         } else {
             return redirect('clients/create')->withErrors('Cliente no ha sido creado');
         }
@@ -57,10 +58,10 @@ class ClientController extends Controller
         $client = $this->client->find($client);
         $formValidated = $request->validated();
         if ($client->update($formValidated)) {
-            return 'Yes';
-            // Alert::success('Success Title', 'Success Message');
+            Alert::success('Éxito', 'Cliente modificado correctamente');
+            return redirect('clients');
         } else {
-            return 'No';
+            Alert::success('Error', 'Al modificar el cliente');
         }
     }
 }

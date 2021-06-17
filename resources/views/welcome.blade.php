@@ -9,7 +9,7 @@
             <div class="w-full h-100">
                 <img src="https://image.freepik.com/vector-gratis/diseno-logotipo-pan_10250-793.jpg" width="450" height="450" class="content-center">
                 <h1 class="text-xl md:text-2xl font-bold leading-tight">Ingresa con tu cuenta.</h1>
-                <form class="mt-6" action="/login" method="POST">
+                <form class="mt-6" action="/api/login" method="POST">
                     <div>
                         <input
                                 type="text"
@@ -22,14 +22,13 @@
                         <input
                                 type="password"
                                 name="password"
-                                id=""
+                                id="password"
                                 placeholder="Contraseña"
-                                minlength="6"
                                 class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
                                 required>
                     </div>
                     <button
-                            type="button"
+                            type="submit"
                             class="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6">
                             Ingresar
                     </button>

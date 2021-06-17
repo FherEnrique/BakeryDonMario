@@ -12,11 +12,17 @@ class UserController extends Controller
     {
         if (Auth::attempt(['user' => $request->user, 'password' => $request->password])) {
             Auth::user();
-            return redirect('/clients');
+            return redirect('/clients')->with('success','¡Bienvenido!');
         } else {
-            return redirect('/');
+            return back()->with('error', 'Verifique sus credenciales');
         }
     }
+
+    public function logout()
+    {
+        return redirect('/');
+    }
+
     public function infoUser()
     {
         return Auth::user();

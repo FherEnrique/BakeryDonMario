@@ -94,5 +94,4 @@
 <main role="main">
     @yield('container')
 </main>
-@include('sweetalert::alert')
 @endsection
